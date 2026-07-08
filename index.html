@@ -100,11 +100,32 @@
         .btn-compare {
             --btn-color: #f5a524;
         }
+
+        .btn-howto-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #d8dce8;
+            background: rgba(255, 255, 255, 0.6);
+            transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .btn-howto-small:hover {
+            color: #8b5cf6;
+            border-color: #8b5cf6;
+            background: #ffffff;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
 
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <a href="prefix.drawio.html" class="btn-fancy btn-prefix" role="button" target="_blank"
@@ -125,6 +146,13 @@
                 <span>Pre vs Post</span>
                 <span class="btn-sub">Compare both</span>
             </button>
+
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="howto.drawio.html" class="btn-howto-small" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-signpost-2"></i> How To
+            </a>
         </div>
     </div>
     <!-- Bootstrap JS (optional) -->
