@@ -1,30 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre vs Post Buttons</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1K6kC4U4RkG1K5n8B1R0Kj/+65SS2FmR5pH1d5jLm6K" crossorigin="anonymous">
-  <style>
-    body {
-      background: linear-gradient(135deg, #f0f4ff, #e0eaff);
-    }
-    .btn-group-custom > button {
-      min-width: 120px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pre vs Post Buttons</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4ff, #e0eaff);
+            min-height: 100vh;
+        }
+
+        .btn-toolbar {
+            gap: 1.25rem;
+        }
+
+        .btn-fancy {
+            --btn-color: #4a6cf7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: 170px;
+            padding: 1.75rem 1.5rem;
+            border-radius: 16px;
+            border: none;
+            background: #ffffff;
+            color: #1f2544;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(74, 108, 247, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-fancy::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--btn-color), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+        }
+
+        .btn-fancy:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(74, 108, 247, 0.22), 0 4px 8px rgba(0, 0, 0, 0.08);
+            color: #1f2544;
+        }
+
+        .btn-fancy:hover::before {
+            opacity: 1;
+        }
+
+        .btn-fancy:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-fancy .icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            background: var(--btn-color);
+        }
+
+        .btn-fancy .btn-sub {
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: #6b7280;
+        }
+
+        .btn-prefix {
+            --btn-color: #4a6cf7;
+        }
+
+        .btn-postfix {
+            --btn-color: #2fb380;
+        }
+
+        .btn-compare {
+            --btn-color: #f5a524;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="btn-group btn-group-custom" role="group" aria-label="Pre vs Post Buttons">
-      <a href="Pre-Fix.drawio.html" class="btn btn-primary mx-2" role="button">Pre Fix</a>
-      <button type="button" class="btn btn-success mx-2">Post Fix</button>
-      <button type="button" class="btn btn-warning mx-2">Pre vs Post</button>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <a href="prefix.drawio.html" class="btn-fancy btn-prefix" role="button" target="_blank"
+                rel="noopener noreferrer">
+                <span class="icon-wrap"><i class="bi bi-file-earmark-diff"></i></span>
+                <span>Pre Fix</span>
+                <span class="btn-sub">Before changes</span>
+            </a>
+
+            <button type="button" class="btn-fancy btn-postfix">
+                <span class="icon-wrap"><i class="bi bi-check2-circle"></i></span>
+                <span>Post Fix</span>
+                <span class="btn-sub">After changes</span>
+            </button>
+
+            <button type="button" class="btn-fancy btn-compare">
+                <span class="icon-wrap"><i class="bi bi-arrow-left-right"></i></span>
+                <span>Pre vs Post</span>
+                <span class="btn-sub">Compare both</span>
+            </button>
+        </div>
     </div>
-  </div>
-  <!-- Bootstrap JS (optional) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+0I5W5yU6V3J1QpIj6t0vKcF8Y2we" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
