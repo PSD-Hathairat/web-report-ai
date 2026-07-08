@@ -17,88 +17,105 @@
             min-height: 100vh;
         }
 
-        .btn-toolbar {
+        .type-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.25rem;
         }
 
-        .btn-fancy {
-            --btn-color: #4a6cf7;
+        .type-card {
+            --card-color: #4a6cf7;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            min-width: 170px;
-            padding: 1.75rem 1.5rem;
-            border-radius: 16px;
-            border: none;
+            gap: 0.9rem;
+            width: 190px;
+            padding: 1.5rem 1.25rem;
+            border-radius: 18px;
             background: #ffffff;
-            color: #1f2544;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
             box-shadow: 0 4px 14px rgba(74, 108, 247, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn-fancy::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, var(--btn-color), transparent 60%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.18s ease;
-        }
-
-        .btn-fancy:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(74, 108, 247, 0.22), 0 4px 8px rgba(0, 0, 0, 0.08);
-            color: #1f2544;
-        }
-
-        .btn-fancy:hover::before {
-            opacity: 1;
-        }
-
-        .btn-fancy:active {
-            transform: translateY(-1px);
-        }
-
-        .btn-fancy .icon-wrap {
-            width: 52px;
-            height: 52px;
+        .type-card .icon-wrap {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             color: #fff;
-            background: var(--btn-color);
+            background: var(--card-color);
         }
 
-        .btn-fancy .btn-sub {
-            font-size: 0.78rem;
-            font-weight: 400;
+        .type-card .type-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1f2544;
+        }
+
+        .type-card .type-sub {
+            font-size: 0.75rem;
             color: #6b7280;
+            margin-top: -0.6rem;
         }
 
-        .btn-prefix {
-            --btn-color: #4a6cf7;
+        .agent-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            border-radius: 10px;
+            border: 1px solid #e5e7f0;
+            background: #f8f9fd;
+            color: #1f2544;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
         }
 
-        .btn-postfix {
-            --btn-color: #2fb380;
+        .agent-btn i {
+            font-size: 0.95rem;
+            color: var(--card-color);
         }
 
-        .btn-compare {
-            --btn-color: #f5a524;
+        .agent-btn .agent-label {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .agent-btn .agent-sub {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #9198a8;
+        }
+
+        .agent-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--card-color);
+            background: #ffffff;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+            color: #1f2544;
+        }
+
+        .type-prefix {
+            --card-color: #4a6cf7;
+        }
+
+        .type-postfix {
+            --card-color: #2fb380;
+        }
+
+        .type-compare {
+            --card-color: #f5a524;
+        }
+
+        .type-other {
+            --card-color: #8b5cf6;
         }
 
         .btn-howto-small {
@@ -125,33 +142,79 @@
 </head>
 
 <body>
-    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 py-5">
 
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <a href="prefix.drawio.html" class="btn-fancy btn-prefix" role="button" target="_blank"
-                rel="noopener noreferrer">
+        <div class="type-grid">
+
+            <!-- Pre Fix -->
+            <div class="type-card type-prefix">
                 <span class="icon-wrap"><i class="bi bi-file-earmark-diff"></i></span>
-                <span>Pre Fix</span>
-                <span class="btn-sub">Before changes</span>
-            </a>
+                <span class="type-title">Pre Fix</span>
+                <span class="type-sub">Before changes</span>
 
-            <button type="button" class="btn-fancy btn-postfix">
+                <a href="prefix-default.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    <span class="agent-label">Default Agent<span class="agent-sub">API Stream</span></span>
+                </a>
+                <a href="prefix-multiagent.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="agent-label">Multi Agent<span class="agent-sub">API Chat</span></span>
+                </a>
+            </div>
+
+            <!-- Post Fix -->
+            <div class="type-card type-postfix">
                 <span class="icon-wrap"><i class="bi bi-check2-circle"></i></span>
-                <span>Post Fix</span>
-                <span class="btn-sub">After changes</span>
-            </button>
+                <span class="type-title">Post Fix</span>
+                <span class="type-sub">After changes</span>
 
-            <button type="button" class="btn-fancy btn-compare">
+                <a href="postfix-default.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    <span class="agent-label">Default Agent<span class="agent-sub">API Stream</span></span>
+                </a>
+                <a href="postfix-multiagent.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="agent-label">Multi Agent<span class="agent-sub">API Chat</span></span>
+                </a>
+            </div>
+
+            <!-- Pre vs Post -->
+            <div class="type-card type-compare">
                 <span class="icon-wrap"><i class="bi bi-arrow-left-right"></i></span>
-                <span>Pre vs Post</span>
-                <span class="btn-sub">Compare both</span>
-            </button>
+                <span class="type-title">Pre vs Post</span>
+                <span class="type-sub">Compare both</span>
+
+                <a href="compare-default.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    <span class="agent-label">Default Agent<span class="agent-sub">API Stream</span></span>
+                </a>
+                <a href="compare-multiagent.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="agent-label">Multi Agent<span class="agent-sub">API Chat</span></span>
+                </a>
+            </div>
+
+            <!-- Other -->
+            <div class="type-card type-other">
+                <span class="icon-wrap"><i class="bi bi-three-dots"></i></span>
+                <span class="type-title">Other</span>
+                <span class="type-sub">Everything else</span>
+
+                <a href="other-default.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    <span class="agent-label">Default Agent<span class="agent-sub">API Stream</span></span>
+                </a>
+                <a href="other-multiagent.html" class="agent-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="agent-label">Multi Agent<span class="agent-sub">API Chat</span></span>
+                </a>
+            </div>
 
         </div>
 
-        <div class="text-center mt-3">
+        <div class="text-center mt-4">
             <a href="howto.drawio.html" class="btn-howto-small" target="_blank" rel="noopener noreferrer">
-                <i class="bi bi-signpost-2"></i>Testing guide
+                <i class="bi bi-signpost-2"></i> Testing guide
             </a>
         </div>
     </div>
